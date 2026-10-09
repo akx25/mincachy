@@ -15,7 +15,7 @@ def is_cachy():
         with open("/etc/os-release", "r") as file:
             os_release = file.read().lower()
 
-        return "id=cachy" in os_release or "id_like=cachy" in os_release
+        return "id=cachyos" in os_release or "id_like=" in os_release and "cachyos" in os_release
 
     except (FileNotFoundError, PermissionError):
         return False
@@ -68,7 +68,7 @@ def get_host():
 
 #os
 def get_os():
-    if not is_arch():
+    if not is_cachy():
         return termcolor.colored("your os is not cachyos!", "yellow")
 
     try:
@@ -113,8 +113,11 @@ info = [
 
 
 #logo place
+#logo place
 for i in range(max(len(logo), len(info))):
     left = logo[i] if i < len(logo) else ""
     right = info[i] if i < len(info) else ""
 
-    print(f"{left:<20} {right}")
+    spaces = 20 - len(left) + (len(left) - len(left.replace("\x1b", "")))
+
+    print(f"{left}{' ' * max(1, spaces)}{right}")
