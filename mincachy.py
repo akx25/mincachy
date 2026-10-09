@@ -9,13 +9,13 @@ import termcolor
 colorama.init()
 
 
-# if arch
-def is_arch():
+# if cachy
+def is_cachy():
     try:
         with open("/etc/os-release", "r") as file:
             os_release = file.read().lower()
 
-        return "id=arch" in os_release or "id_like=arch" in os_release
+        return "id=cachy" in os_release or "id_like=cachy" in os_release
 
     except (FileNotFoundError, PermissionError):
         return False
@@ -24,7 +24,7 @@ def is_arch():
 # --issue
 parser = argparse.ArgumentParser(
     description=termcolor.colored(
-        "minarch - a system information tool for arch linux.",
+        "mincachy - a system information tool for cachyos.",
         "cyan",
         "on_black"
     )
@@ -35,7 +35,7 @@ parser.add_argument(
     action="store_true",
     help=termcolor.colored(
         "if you have an issue with the tool, contact me on discord "
-        "@ak0101101 or on github: https://github.com/akx25/minarch/issues",
+        "@ak0101101 or on github: https://github.com/akx25/mincachy/issues",
         "yellow"
     )
 )
@@ -46,14 +46,14 @@ args = parser.parse_args()
 if args.issue:
     print(
         termcolor.colored(
-            "if you have an issue with minarch, contact me on discord or gitHub:",
+            "if you have an issue with mincachy, contact me on discord or gitHub:",
             "yellow"
         )
     )
     print(termcolor.colored("discord: @ak0101101", "magenta"))
     print(
         termcolor.colored(
-            "github: https://github.com/akx25/minarch/issues",
+            "github: https://github.com/akx25/mincachy/issues",
             "black",
             "on_white"
         )
@@ -69,7 +69,7 @@ def get_host():
 #os
 def get_os():
     if not is_arch():
-        return termcolor.colored("your os is not arch linux!", "yellow")
+        return termcolor.colored("your os is not cachyos!", "yellow")
 
     try:
         with open("/etc/os-release", "r") as file:
@@ -80,7 +80,7 @@ def get_os():
     except (FileNotFoundError, PermissionError):
         pass
 
-    return "arch linux"
+    return "cachyos"
 
 
 # memory
