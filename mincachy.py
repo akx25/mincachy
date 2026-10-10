@@ -100,7 +100,7 @@ logo = [
     termcolor.colored(r"  ___ ", "green"),
     termcolor.colored(r" / __) o", "green"),
     termcolor.colored(r"( (__   o", "green"),
-    termcolor.colored(r" \___)O", "green"),
+    termcolor.colored(r" \___) O", "green"),
 ]
 
 
